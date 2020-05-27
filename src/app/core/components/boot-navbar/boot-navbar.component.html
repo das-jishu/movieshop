@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+
+  <div class="container">
+    <a style="color: whitesmoke;" class="navbar-brand" routerLink="/">
+      <i class="fa fa-film" aria-hidden="true"></i>
+    </a>
+    <button (click)="isMenuCollapsed = !isMenuCollapsed" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a style="color: whitesmoke;" class="nav-link" (click)="isMenuCollapsed = true" routerLink="/shopping-cart">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;
+            <span class="badge badge-warning pill" *ngIf="cart$ | async as cart">
+              {{ cart.getTotalItemsCount() }}
+            </span>
+          </a>
+        </li>       
+      </ul>
+      
+      <ul class="navbar-nav">
+        <li *ngIf="!appUser" class="nav-item">
+          <a style="color: whitesmoke;" class="nav-link" (click)="isMenuCollapsed = true" routerLink="/login">Login</a>
+        </li>
+        <li *ngIf="appUser" ngbDropdown class="nav-item dropdown">
+          <a style="color: whitesmoke;" ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ appUser.name }}
+          </a>
+          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a (click)="isMenuCollapsed = true" class="dropdown-item" routerLink="/my/orders">My Orders</a>
+            <a (click)="isMenuCollapsed = true" class="dropdown-item" *ngIf="appUser.isAdmin" routerLink="/admin/orders">Manage orders</a>
+            <!-- <div class="dropdown-divider"></div> -->
+            <a (click)="isMenuCollapsed = true" class="dropdown-item" *ngIf="appUser.isAdmin" routerLink="/admin/products">Manage Products</a>
+            <a (click)="isMenuCollapsed = true" class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+    
+</nav>

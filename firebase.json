@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/movieshop",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

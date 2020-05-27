@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+
+* {
+    font-family: 'Roboto Slab', serif;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    margin-top: 40px;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

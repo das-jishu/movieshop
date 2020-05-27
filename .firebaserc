@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "movieshop-ebc8a": {
+      "hosting": {
+        "movieshop": [
+          "movieshop-ebc8a"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "movieshop-ebc8a"
+  }
+}
